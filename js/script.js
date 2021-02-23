@@ -14,7 +14,7 @@ statusDisplay.innerHTML = currentPlayerTurn();
 
 // Clicking functionaliity
 document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleCellClick));
-// document.querySelector('.game--restart').addEventListener('click', handleRestartGame);
+
 
 // ---------------------------------------------HANDLE CELL CLICK
 
@@ -71,6 +71,8 @@ function handleResultValidation() {
             break
         }
 
+    }
+
         if (roundWon) {
             statusDisplay.innerHTML = winningMessage();
             gameActive = false;
@@ -90,4 +92,14 @@ function handleResultValidation() {
 function handlePlayerChange() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     statusDisplay.innerHTML = currentPlayerTurn();
+}
+
+document.querySelector('.game--restart').addEventListener('click', handleRestartGame);
+function handleRestartgame(){
+    gameActive = true;
+    currentPlayer = "x";
+    gameState = ["", "", "", "", "", "", "", "", ""];
+    statusDisplay.innerHTML = currentPlayerTurn();
+    document.querySelectorAll('.cell')
+                .forEach(cell => cell.innerHTML ="");
 }
